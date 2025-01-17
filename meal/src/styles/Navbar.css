@@ -33,7 +33,7 @@ body {
 .navbarCustom .navLink {
     color: #fa5f1a;
     padding: 10px 10px;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .navbarCustom .navLink:hover {
@@ -41,15 +41,15 @@ body {
 }
 
 .navbarCustom .navItem {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 
 .d-flex .btn{
     background-color:#ea2340;
     color:#fff;
-    font-size: 17px;
+    font-size: 15px;
 }
 .search-icon-container {
     display: flex;
