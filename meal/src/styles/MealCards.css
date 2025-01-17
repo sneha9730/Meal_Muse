@@ -1,0 +1,109 @@
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #252330;
+    color: white;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-bottom: 1.5rem;
+    width: 100%; 
+    max-width: 400px; 
+}
+
+.card-img-top {
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #ea2340;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: -20px; 
+    font-weight: 700;
+}
+
+h4{
+    color:#ea2340;
+    text-align: left;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-text {
+    font-size: 15px;
+    color: #f5eee6;
+    padding-top: 0px;
+    padding-bottom: 7px;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.detail-icon {
+    width: 40px; 
+    height: 40px; 
+    margin-right: 5px;
+}
+
+.detail-item span {
+    font-size: 15px;
+    color: #f5eee6; 
+    font-weight: normal;
+}
+
+.view-more-container {
+    position: absolute; 
+    top: 15px;
+    right: 15px; 
+}
+
+.recipe_img {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    background-color: #ea2340;
+    padding: 5px; 
+}
+
+.view-more-button {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+@media screen and (max-width: 767px) {
+    .container h2 {
+        font-size: 2rem;
+    }
+    .card {
+        max-width: 100%; 
+    }
+    .card-title {
+        font-size: 1.2rem;
+        color:#ea2340;
+    }
+    .card-text {
+        font-size: 14px; 
+    }
+}

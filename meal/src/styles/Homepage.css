@@ -1,0 +1,143 @@
+.Homepage{
+    background-color: #1c1d24;
+    margin:0;
+    border:0;
+    align-items: center;
+  }
+  
+  .fullscreen-bg {
+    background-image: url('../assests/Home.jpg'); 
+    height: 100vh; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top:0
+  }
+  
+  .overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6); 
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; 
+      padding: 100px;
+      color: #ea2340;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+  }
+  
+  .fullscreen-bg h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: left;
+  }
+  
+  .fullscreen-bg p {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #f5eee6;
+      text-align: left;
+  }
+  
+  .container-fluid{
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+    padding: 0% 5%;
+  }
+  .Homepage h2{
+    color:#ea2340;
+    padding-top:30px;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding-bottom: 10px;
+  }
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+  #about{
+    background-color: #252330;
+    padding: 40px 0px;
+  }
+  #why{
+    margin-top:0px;
+  }
+  .about-list{
+    display: grid;
+    max-width: 1000px;
+    width:100%;
+    align-items:flex-start;
+    text-align: left;
+    margin: 0 calc((100% - 1000px) / 2);
+    padding: 0 25px;
+  }
+  .points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 15px 0px;
+  }
+  .icon-about{
+    padding: 10px;
+  }
+  .text-abount{
+    padding: 0 10px;
+  }
+  .point-img {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  .point-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin: 0;
+    grid-column: span 2;
+    justify-content: left;
+    color: #ea2340;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    padding-left: 50px; /* Makes title span across both columns */
+  }
+  
+  .point-description {
+    font-size: 1.1rem;
+    color: #ccc;
+    padding-left: 50px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .card-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablets */
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .card-container {
+      grid-template-columns: 1fr; /* 1 card per row for mobile */
+    }
+  }
+
+  
+  .benefits-list {
+    display: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 700px;
+  }

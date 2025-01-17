@@ -1,0 +1,332 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#styling{
+  width: 100%;
+  margin: auto;
+  background-color: #1c1d24; /* Set background color to semi-transparent white */
+  border-radius: 10px;
+  padding: 0% 5%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px; /* Adjust this value to move the box down */
+}
+
+h2.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: white; /* Change heading color to red */
+}
+
+.goals {
+  margin-bottom: 30px;
+  margin-left:5%;
+  margin-right: 5%;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.goals-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 15px;
+  margin: 0 20px;
+  scroll-behavior: smooth;
+  max-width: calc(100% - 120px);
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none; /* For Firefox */
+
+}
+
+.goals-container::-webkit-scrollbar {
+  display: none; 
+}
+.goal-item {
+  flex: none;
+  text-align: center;
+  padding: 15px;
+  width: 130px;
+  height: 150px;
+  background-color: #f9f9f9; /* Keep this if you want a background for each goal item */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.goal-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.goal-item p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.goal-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.goal-item.selected {
+  border-color:#ea2340;
+}
+
+.arrow {
+  font-size: 40px;
+  cursor: pointer;
+  margin: 0 10px;
+  color: #ea2340;
+  transition: color 0.2s;
+}
+
+.arrow:hover {
+  color: #ea2340;
+  transform: scale(1.1);
+}
+
+.left-arrow {
+  position: absolute;
+  left: 10px;
+  z-index: 1;
+}
+
+.right-arrow {
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+}
+
+#recipesContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%; /* Ensures full width */
+  padding: 10px; /* Optional padding for spacing */
+}
+
+span{
+  border-color:#fff;
+}
+  
+.nutritional-button {
+  margin: 25px auto; /* Center the button */
+  display: block; /* Make it a block element for centering */
+  padding: 10px 16px;
+  font-size: 18px;
+  background-color: #ea2340; /* Change button color to red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nutritional-button:hover {* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.1); /* More transparent white */
+  backdrop-filter: blur(8px); /* Added blur for glass effect */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly more pronounced shadow */
+  margin-top: 30px; /* Adjust this value to move the box down */
+}
+
+h2.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ea2340; /* Change heading color to red */
+}
+
+.goals {
+  margin-bottom: 30px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.goals-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 15px;
+  margin: 0 20px;
+  scroll-behavior: smooth;
+  max-width: calc(100% - 120px);
+}
+
+.goal-item {
+  flex: none;
+  text-align: center;
+  padding: 15px;
+  width: 130px;
+  height: 150px;
+  background-color: #f9f9f9; /* Keep this if you want a background for each goal item */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Added background color transition */
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.goal-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.goal-item p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.goal-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.1); /* Change background slightly on hover */
+}
+
+.goal-item.selected {
+  border-color: #ea2340;
+}
+
+.arrow {
+  font-size: 40px;
+  cursor: pointer;
+  margin: 0 10px;
+  color: #ea2340;
+  transition: color 0.2s;
+}
+
+.arrow:hover {
+  color: #ea2340;
+  transform: scale(1.1);
+}
+
+.left-arrow {
+  position: absolute;
+  left: 10px;
+  z-index: 1;
+}
+
+.right-arrow {
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+}
+
+#recipesContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%; /* Ensures full width */
+  padding: 10px; /* Optional padding for spacing */
+}
+
+.nutritional-button {
+  margin: 20px auto; /* Center the button */
+  display: block; /* Make it a block element for centering */
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #ea2340; /* Change button color to red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nutritional-button:hover {
+  background-color: #ff4d4d; /* Slightly lighter red on hover */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .goal-item {
+    width: 120px; /* Adjust card size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-item {
+    width: 100%; /* 1 card per row on mobile */
+  }
+}
+
+  background-color: #ff4d4d; /* Slightly lighter red on hover */
+}
+.loading-message {
+  margin-top: 10px;
+  font-size: 14px;
+  color: white;
+}
+.loading-message {
+  text-align: center;
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin: 20px 0;   /* Add some margin */
+  color: #e55519;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color:#ea2340;
+  color: white;
+}
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .goal-item {
+      width: 120px; /* Adjust card size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-item {
+      width: 100%; /* 1 card per row on mobile */
+  }
+}

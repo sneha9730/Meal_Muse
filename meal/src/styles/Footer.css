@@ -1,0 +1,103 @@
+.footer {
+    background-color: #1c1d24; /* Dark background color */
+    color: white;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0 0px 0px;
+    position: relative;
+    bottom: 0;
+}
+
+/* Footer content styling */
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Logo section */
+.footer-logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+/* Logo styling */
+.footer-logo {
+    width: 200px; /* Adjust logo size as needed */
+}
+
+/* Footer description */
+.footer-description {
+    font-size: 1.1rem;
+    color: #ccc;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+}
+
+/* Footer links */
+.footer-links ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.footer-links li {
+    position: relative;
+    margin-bottom: 5px;
+    padding-left: 20px;
+}
+
+.footer-links li::before {
+    content: ''; /* Empty content for the pseudo-element */
+    background-image: url('../assests/Points-red.png'); /* Path to your bullet image */
+    background-size: 30px 30px; /* Adjust the size of the image as needed */
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 30px;
+    height: 30px;
+}
+
+.footer-links li a {
+    color: #ea2340;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 250%;
+    padding-left: 20px;
+}
+
+.footer-links li a:hover {
+    color: #ccc;
+}
+
+/* Custom link styling */
+.link {
+    padding-top: 20px;
+    font-size: 1.75rem;
+    color: white;
+    line-height: 175%;
+    font-weight: 700;
+    text-align: left;
+}
+
+/* Rights text styling */
+.rights {
+    color: #ccc;
+    text-align: center;
+    background-color: #2a2d3a;
+    padding: 10px 0;
+    align-items: center;
+    font-size: 16px;
+    height: 40px;
+}
+

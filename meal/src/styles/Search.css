@@ -1,0 +1,83 @@
+#Search-box {
+    max-width: 1200px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 50px;
+    background-color: #252330;
+    border-radius: 20px;
+}
+
+.input-group {
+    width: 95%;
+    align-items: stretch;
+    padding: 0% 60px;
+}
+
+.headingsaa {
+    color: #ea2340;
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+
+#button-search {
+    background-color: #252330;
+    border-color: gray;
+    color: #ea2340;
+    font-size: 18px;
+}
+#button-search:focus{
+    background-color:#1c1d24 ;
+
+}
+.d-flex{
+    align-items: center;
+}
+.input {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #252330;
+    box-shadow: 0 0 5px #252330;
+    outline: none;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #252330;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+    height: 40px; /* Sets the height of the input box */
+}
+
+.input-group-text {
+    background-color: #ea2340;
+    border: none;
+    height: 40px; /* Matches the height of the input box */
+    display: flex;
+    align-items: center;
+}
+#tired{
+    color:#fff;
+    border-color: #fff;
+}
+
+.search-results{
+    padding: 0% 5%;
+}
+.dude{
+    color:#ea2340;
+    text-transform: uppercase;
+    font-weight:3rem;
+    font-weight:700;
+    padding-bottom: 20px;
+}

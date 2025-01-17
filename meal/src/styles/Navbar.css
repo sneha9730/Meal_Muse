@@ -1,0 +1,71 @@
+body {
+    padding-top: 80px; /* Adjust this value to match the height of your navbar */
+}
+
+.navbarCustom {
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    height: 80px;
+    position: fixed;
+    z-index: 9999;
+    width:100%;
+    top:0;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navbarCustom .navbarBrand {
+    color: #fa5f1a;
+    font-size: 22px;
+    font-weight: 600; 
+}
+
+.navbarCustom .navbarBrand .navbar-logo {
+    height: 70px;
+    width: auto;
+}
+
+.navbarCustom .navLink.active {
+    color: #fa5f1a !important; 
+}
+
+.navbarCustom .navLink {
+    color: #fa5f1a;
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.navbarCustom .navLink:hover {
+    color: #ea2340; 
+}
+
+.navbarCustom .navItem {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.d-flex .btn{
+    background-color:#ea2340;
+    color:#fff;
+    font-size: 17px;
+}
+.search-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fa5f1a;
+    border-radius: 25%;/* Adjust as needed */
+    cursor: pointer;
+    margin-top: 4px;
+    
+}
+
+.search-icon {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+}

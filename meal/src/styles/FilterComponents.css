@@ -1,0 +1,21 @@
+/* Center the filter input and make it look stylish */
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.filter-input {
+  width: 300px;
+  padding: 12px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .filter-input {
+    width: 100%;
+  }
+}

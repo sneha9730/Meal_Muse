@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.TimePage {
+  padding: -20px;
+  background-color: #1c1d24;
+}
+h1 {
+  color: #ea2340 !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size:3rem;
+}
+.page-descrption{
+  color:#666;
+  font-size: 1.25rem;
+  padding-bottom: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time-filter-input {
+  width: 200px;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.time-filter-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #007bff;
+}
+.error {
+  color: #ea2340;
+  text-align: center;
+  margin-top: 10px;
+}
+.no-meals {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: orange;
+  color: white;
+}
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.category-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color:#ccc;
+  font-weight: 300;
+}
+.filter-box {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.filter-box.selected {
+  opacity: 1;
+  font-weight: bold;
+  border: 2px solid #000;
+}
+.filter-box:hover {
+  opacity: 0.8;
+}
+
+.meal-cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+.loading-message {
+  text-align: center;
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin: 20px 0;   /* Add some margin */
+  color: #e55519;
+}
+
+.reset-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.reset-icon {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+span{
+  color:#ccc
+}
+
+@media screen and (max-width: 992px) {
+  .meal-cards-container{
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablets */
+  }
+}

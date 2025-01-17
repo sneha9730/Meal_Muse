@@ -1,0 +1,260 @@
+.recommendations-section {
+    padding: 20px 0;
+}
+
+.recommendations-section h3 {
+    color: #ea2340 !important; /* Red color for the title */
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.recommendations {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Set to exactly 4 columns */
+    gap: 20px; /* Space between the meal cards */
+}
+
+@media (max-width: 768px) {
+    .recommendations {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .recommendations {
+        grid-template-columns: 1fr; /* 1 column on extra small screens */
+    }
+}
+
+/* Existing styles remain the same */
+.recipe-details {
+    top: 100px !important;
+    background-color: #1c1d24;
+    padding: 1% 5%;
+    text-align: left;
+}
+
+.img-fluid {
+    width: 100%;
+    max-width: 625px;
+}
+
+#title {
+    color: #ea2340 !important;
+    font-weight: 700;
+    font-size: 2.75rem;
+    text-transform: uppercase;
+    text-align: left;
+
+}
+
+#cat {
+    color: #a6a6a6 !important;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.star-rating {
+    font-size: 1.75rem;
+}
+
+#count {
+    color: beige !important;
+    font-size: 1.25rem;
+    transform: translateY(4px);
+}
+
+#description {
+    color: aliceblue !important;
+    font-size: 1rem;
+    font-weight: lighter !important;
+    text-align: justify;
+}
+
+.recipe-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c1d24;
+    padding: 0px 0;
+}
+
+#number {
+    color: #a6a6a6;
+    font-size: 3.75rem;
+    margin: 0;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+#value {
+    color: #ea2340;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.separator {
+    border-left: 3px solid #f1f1f1;
+    padding-left: 15px;
+}
+
+.separator #number,
+.separator #value {
+    padding-left: 15px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.fav-button,
+.gmail-button,
+.pdf-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+
+.fav-button.favorited {
+    background-color: #000; /* Black background when favorited */
+    color: #fff; /* Red text when favorited */
+
+}
+
+.fav-button {
+    background-color: #ea2340;
+    color: #fff;
+}
+
+.gmail-button {
+    background-color: #db4437;
+}
+
+.pdf-button {
+    background-color: #4285f4;
+}
+
+.button-icon {
+    width: 27px;
+    height: 27px;
+    margin-right: 7px;
+    align-items: center;
+}
+
+#head1 {
+    color: #ea2340 !important;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 15px;
+    padding-top: 30px;
+}
+
+.h5 {
+    color: beige;
+    font-size: 25px;
+}
+
+.label {
+    color: #fa5f1a;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+#ingred,
+#dir {
+    color: #a6a6a6 !important;
+    font-size: 1.25rem;
+    padding-bottom: 0;
+    padding-bottom: 5px;
+    text-align: justify;
+}
+
+#recipe-notes {
+    width: 100%;
+    padding: 10px;
+    background-color: #252330;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    resize: none;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+.save-notes {
+    padding: 10px 20px;
+    background-color: #ea2340;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.save-notes:hover {
+    background-color: #f0ad4e;
+}
+
+/* Print styles remain the same */
+@media print {
+    .button-container,
+    #pdf-content .fav-button,
+    #pdf-content .gmail-button,
+    #pdf-content .pdf-button,
+    #recipe-notes,
+    .notes-container,
+    .navbar {
+        display: none !important;
+    }
+
+    #pdf-content {
+        visibility: visible;
+        background-color: #1c1d24;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        background-color: #1c1d24;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .recipe-stats .col {
+        font-size: 1.2em;
+        line-height: 1.1;
+    }
+
+    .recipe-stats #number {
+        font-size: 3em;
+    }
+
+    .recipe-stats #value {
+        font-size: 0.7em;
+    }
+
+    .my-3 {
+        margin: 0.5rem 0;
+    }
+
+    #pad {
+        page-break-inside: avoid;
+    }
+
+    h3 {
+        margin-top: 1rem;
+    }
+}

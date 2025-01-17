@@ -1,0 +1,57 @@
+[
+    {
+        "question": "What is your dietary preference?",
+        "options": [
+            "Herbivore",
+            "Carnivore",
+            "Eggitarian",
+            "Pescatarian",
+            "Vegan"
+        ]
+    },
+    {
+        "question": "Do you have specific ingredients to avoid?",
+        "options": [
+            "Milk",
+            "Egg",
+            "Peanuts",
+            "Soybeans",
+            "Wheat",
+            "Tree nuts",
+            "Shellfish",
+            "Fish",
+            "Sesame"
+        ]
+    },
+    {
+        "question": "Do you have any health goals?",
+        "options": [
+            "Weight loss",
+            "Muscle gain",
+            "Maintaining current weight",
+            "Improving overall health"
+        ]
+    },
+    {
+        "question": "What meal are you planning to have next?",
+        "options": [
+            "Breakfast",
+            "Lunch",
+            "Dinner",
+            "Snacks",
+            "Dessert",
+            "Beverages"
+        ]
+    },
+    {
+        "question": "Are you currently managing any health conditions?",
+        "options": [
+            "Diabetes",
+            "High cholesterol",
+            "High Blood Pressure",
+            "PCOS",
+            "Vitamin Deficiency",
+            "No Specific condition"
+        ]
+    }
+]

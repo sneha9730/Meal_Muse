@@ -1,0 +1,13 @@
+.star-rating {
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+  
+  .filled {
+    color: gold; 
+  }
+  
+  .empty {
+    color: lightgray; 
+  }
+  

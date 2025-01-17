@@ -1,0 +1,78 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.IngredientPage {
+  padding: 20px;
+}
+
+h2 {
+  color: red;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredient-filter-input {
+  width: 300px;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ingredient-filter-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.no-meals {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: orange;
+  color: white;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.loading-message {
+  text-align: center;
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin: 20px 0;   /* Add some margin */
+}
+
