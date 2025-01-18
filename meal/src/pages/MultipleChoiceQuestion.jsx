@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import questions from './file.json'; // Importing questions JSON file
-import MealCards from '../components/MealCards'; // Import the MealCards component
+import questions from './file.json'; 
+import MealCards from '../components/MealCards';
 import '../styles/mcqs.css';
 
 const MultipleChoiceQuestion = () => {
@@ -31,7 +31,7 @@ const MultipleChoiceQuestion = () => {
             options.map(option => ({ questionIndex: index, selectedOption: option }))
         );
 
-        const baseUrl = 'http://localhost:5000/mealtype'; // Ensure this endpoint is correct
+        const baseUrl = 'http://localhost:5000/mealtype';
         const params = new URLSearchParams({
             page: 1,
             limit: 20,
@@ -44,7 +44,7 @@ const MultipleChoiceQuestion = () => {
                     params.append('DietaryCategory', selectedOption);
                     break;
                 case 1:
-                    params.append('Ingredients_to_Avoid', selectedOption); // Ensure you concatenate ingredients
+                    params.append('Ingredients_to_Avoid', selectedOption);
                     break;
                 case 2:
                     params.append('HealthGoals', selectedOption);
@@ -69,7 +69,7 @@ const MultipleChoiceQuestion = () => {
                 throw new Error(`Failed to fetch meals: ${errorMessage}`);
             }
             const data = await response.json();
-            setMealResults(data.recipes); // Ensure you are accessing the correct key in the response
+            setMealResults(data.recipes);
             setResultMessage(`${data.recipes.length} meal${data.recipes.length !== 1 ? 's' : ''} found!`);
             setSelectedOptions(questions.map(() => []));
         } catch (error) {
@@ -113,7 +113,7 @@ const MultipleChoiceQuestion = () => {
                         <h3>Meal Results:</h3>
                         <div className="meal-cards-container">
                             {mealResults.map((meal, index) => (
-                                <MealCards key={index} recipe={meal} /> // Pass meal data to MealCards component
+                                <MealCards key={index} recipe={meal} />
                             ))}
                         </div>
                     </div>

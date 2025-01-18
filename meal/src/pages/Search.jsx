@@ -80,7 +80,6 @@ const SearchPage = () => {
         {error && <p className="text-danger">Error: {error}</p>}
       </div>
 
-      {/* Search Results Section (Outside of the main container) */}
       <div className="search-results mt-4">
         <h3 className='dude'>Results</h3>
         {results.length > 0 ? (
@@ -93,7 +92,6 @@ const SearchPage = () => {
           <p>No results found</p>
         )}
 
-        {/* Pagination Controls */}
         <div className="pagination-controls">
           <button
             onClick={() => handlePageChange(currentPage - 1)}

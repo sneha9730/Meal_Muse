@@ -2,7 +2,7 @@ const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); // Importing JWT
+const jwt = require('jsonwebtoken');
 const Note = require('./models/Note');
 require('dotenv').config();
 
@@ -12,22 +12,18 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.MONGODB_URI; // MongoDB connection string
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let userCollection;
 let recipeCollection;
 
-// Connect to MongoDB
 async function connectToDatabase() {
     try {
         await client.connect();
         console.log('Connected to MongoDB');
-        
-        // User collection for login/signup
+
         userCollection = client.db('Login').collection('Users');
-        
-        // Recipe collection for meal recipes
         recipeCollection = client.db('MealMuse').collection('recipes');
         noteCollection = client.db('MealMuse').collection('notes');
         
@@ -38,53 +34,46 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-// Graceful shutdown for MongoDB connection
 process.on('SIGINT', async () => {
     await client.close();
     console.log('MongoDB connection closed.');
     process.exit(0);
 });
-// Middleware to authenticate JWT
 const authenticateToken = (req, res, next) => {
     const token = req.headers['authorization'] && req.headers['authorization'].split(' ')[1];
     if (!token) return res.sendStatus(401);
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) return res.sendStatus(403);
-        req.user = user; // Save user info in request
+        req.user = user;
         next();
     });
 };
-// Root route (optional)
+
 app.get('/', (req, res) => {
     res.send('Welcome to the Meal Recommendation API!');
 });
 
-// Route to get recipes based on various filters
 app.get('/recipes', async (req, res) => {
     const { minTime, maxTime, minCalories, maxCalories, ingredients = '', DietaryCategory = '', page = 1, limit = 20 } = req.query;
 
     try {
         let filter = {};
 
-        // Add time filter if provided
         if (minTime && maxTime) {
             filter.TotalTime = { $gte: parseInt(minTime), $lte: parseInt(maxTime) };
         }
 
-        // Add calorie filter if provided
         if (minCalories && maxCalories) {
             filter.Calories = { $gte: parseInt(minCalories), $lte: parseInt(maxCalories) };
         }
 
-        // Add ingredient filter if provided
         if (ingredients) {
             const ingredientsArray = ingredients.split(',').map(ingredient => ingredient.trim());
             const regexArray = ingredientsArray.map(ingredient => new RegExp(ingredient, 'i'));
             filter.RecipeIngredientParts = { $all: regexArray };
         }
 
-        // Add dietary category filter if provided
         if (DietaryCategory) {
             filter.DietaryCategory = { $regex: new RegExp(`^${DietaryCategory.trim().toLowerCase()}$`, 'i') };
         }
@@ -108,12 +97,11 @@ app.get('/recipes', async (req, res) => {
     }
 });
 
-// Route to get a recipe by its ID
 app.get('/recipe/:id', async (req, res) => {
     const { id } = req.params;
 
     try {
-        const recipe = await recipeCollection.findOne({ RecipeId: parseInt(id) }); // Adjust to your identifier field
+        const recipe = await recipeCollection.findOne({ RecipeId: parseInt(id) });
 
         if (!recipe) {
             return res.status(404).json({ message: 'Recipe not found' });
@@ -132,28 +120,23 @@ app.get('/search', async (req, res) => {
       let filter = {};
   
       if (query) {
-        filter.Name = { $regex: query, $options: 'i' }; // Case-insensitive match
+        filter.Name = { $regex: query, $options: 'i' };
       }
   
       if (category) {
-        filter.RecipeCategory = { $regex: category, $options: 'i' }; // Case-insensitive match for category
+        filter.RecipeCategory = { $regex: category, $options: 'i' };
       }
-  
-      // Convert page and limit to integers
+
       const pageNumber = parseInt(page, 10);
       const limitNumber = parseInt(limit, 10);
-  
-      // Fetch matching recipes from the database with pagination
+
       const results = await recipeCollection
         .find(filter)
-        .skip((pageNumber - 1) * limitNumber)  // Skip to the correct page
-        .limit(limitNumber)  // Limit results per page
+        .skip((pageNumber - 1) * limitNumber)
+        .limit(limitNumber)
         .toArray();
-  
-      // Count total recipes for pagination info
+
       const totalCount = await recipeCollection.countDocuments(filter);
-  
-      // Calculate total pages
       const totalPages = Math.ceil(totalCount / limitNumber);
   
       res.json({
@@ -167,11 +150,7 @@ app.get('/search', async (req, res) => {
       res.status(500).json({ message: 'Error searching recipes', error: error.message });
     }
   });
-  
-        // Define an array of acceptable dietary categories
 const acceptableCategories = ['vegetarian', 'non-vegetarian', 'eggitarian', 'vegan', 'pescatarian'];
-
-// Route to get recipes based on dietary category with pagination
 app.get('/recipes-by-diet', async (req, res) => {
     const { DietaryCategory, page = 1, limit = 20 } = req.query;
 
@@ -206,31 +185,27 @@ app.get('/recipes-by-diet', async (req, res) => {
     }
 });
 
-// Route to get recipes based on both LifestyleGoals (array) and DietaryCategory with pagination
 app.get('/recipes-by-nutrition-and-diet', async (req, res) => {
     const { LifestyleGoals, DietaryCategory, page = 1, limit = 20 } = req.query;
-    console.log('Query Parameters:', req.query); // Log the incoming query parameters
+    console.log('Query Parameters:', req.query);
 
     try {
-        const database = client.db('MealMuse'); // Adjust to your database name
-        const collection = database.collection('recipes'); // Adjust to your collection name
+        const database = client.db('MealMuse');
+        const collection = database.collection('recipes');
 
         const filter = {};
-
-        // Add filter for DietaryCategory (exact match)
         if (DietaryCategory) {
             const normalizedCategory = DietaryCategory.trim().toLowerCase();
-            filter.DietaryCategory = { $regex: new RegExp(`^${normalizedCategory}$`, 'i') }; // Case-insensitive search
+            filter.DietaryCategory = { $regex: new RegExp(`^${normalizedCategory}$`, 'i') };
         }
 
-        // Add filter for LifestyleGoals (array)
         if (LifestyleGoals) {
             const goalsArray = Array.isArray(LifestyleGoals) ? LifestyleGoals : [LifestyleGoals];
-            filter.LifestyleGoals = { $elemMatch: { $in: goalsArray } }; // Check if any of the goals match
+            filter.LifestyleGoals = { $elemMatch: { $in: goalsArray } };
         }
 
         const totalRecipes = await collection.countDocuments(filter);
-        console.log('Total Recipes Found:', totalRecipes); // Debugging statement
+        console.log('Total Recipes Found:', totalRecipes);
 
         const recipes = await collection
             .find(filter)
@@ -271,7 +246,7 @@ app.get('/mealtype', async (req, res) => {
 
         if (Ingredients_to_Avoid) {
             const ingredientsArray = Ingredients_to_Avoid.split(',').map(item => item.trim());
-            filter.RecipeIngredientParts = { $not: { $in: ingredientsArray.map(ingredient => new RegExp(ingredient, 'i')) } }; // Exclude ingredients
+            filter.RecipeIngredientParts = { $not: { $in: ingredientsArray.map(ingredient => new RegExp(ingredient, 'i')) } };
         }
 
         if (HealthGoals) {
@@ -301,8 +276,6 @@ app.get('/mealtype', async (req, res) => {
     }
 });
 
-
-// Route to register a new user
 app.post('/register', async (req, res) => {
     const { email, password, name } = req.body;
     try {
@@ -314,21 +287,19 @@ app.post('/register', async (req, res) => {
         const newUser = { email, name, password: hashedPassword, favorites: [] };
         const result = await userCollection.insertOne(newUser);
 
-        // Generate a JWT token
         const token = jwt.sign({ userId: result.insertedId }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.status(201).json({
             email: newUser.email,
             name: newUser.name,
             _id: result.insertedId,
-            token // Send the token in response
+            token
         });
     } catch (error) {
         console.error('Error registering user:', error.message);
         res.status(500).json({ message: 'Error registering user', error: error.message });
     }
 });
-// Route to login a user
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -341,7 +312,6 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ message: 'Invalid password' });
         }
 
-        // Generate a JWT token
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         
         res.json({
@@ -350,7 +320,7 @@ app.post('/login', async (req, res) => {
             name: user.name,
             photo: user.photo,
             favorites: user.favorites,
-            token, // Send the token in response
+            token,
         });
     } catch (error) {
         console.error('Error logging in user:', error.message);
@@ -359,18 +329,15 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/user/:id', authenticateToken, async (req, res) => {
-    const { id } = req.params; // You can remove this line
-    console.log("Fetching user with ID:", id); // You can remove or keep this log
+    const { id } = req.params;
+    console.log("Fetching user with ID:", id);
     try {
-        // Validate the token
         if (!req.user || !req.user.userId) {
             return res.status(401).json({ message: 'Unauthorized' });
         }
 
-        const userId = req.user.userId; // Get user ID from token
-        console.log("Fetching user with ID from token:", userId); // Log the user ID being fetched
-
-        // Fetch user data from the database using the ID from the token
+        const userId = req.user.userId;
+        console.log("Fetching user with ID from token:", userId);
         const user = await userCollection.findOne({ _id: new ObjectId(userId) });
         console.log("User data from database:", user);
 
@@ -378,7 +345,6 @@ app.get('/user/:id', authenticateToken, async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Return user data
         res.json({
             _id: user._id,
             email: user.email,
@@ -392,7 +358,7 @@ app.get('/user/:id', authenticateToken, async (req, res) => {
     }
 });
 app.get('/user', authenticateToken, async (req, res) => {
-    const userId = req.user.userId; // Get user ID from token
+    const userId = req.user.userId;
     try {
         const user = await userCollection.findOne({ _id: new ObjectId(userId) });
         if (!user) {
@@ -411,13 +377,11 @@ app.get('/user', authenticateToken, async (req, res) => {
     }
 });
 
-// Route to update user favorites
 app.put('/user/:userId/favorites', authenticateToken, async (req, res) => {
     const userId = req.params.userId;
     const { recipeId } = req.body;
 
     try {
-        // Validate the token
         if (!req.user || req.user.userId !== userId) {
             return res.status(401).json({ message: 'Unauthorized' });
         }
@@ -427,20 +391,17 @@ app.put('/user/:userId/favorites', authenticateToken, async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        // Check if the recipe is already in favorites
         const favorites = user.favorites;
         if (favorites.includes(recipeId)) {
-            // Remove the recipe from favorites
             await userCollection.updateOne(
                 { _id: new ObjectId(userId) },
                 { $pull: { favorites: recipeId } }
             );
             return res.status(200).json({ message: 'Recipe removed from favorites' });
         } else {
-            // Add the recipe to favorites
             await userCollection.updateOne(
                 { _id: new ObjectId(userId) },
-                { $addToSet: { favorites: recipeId } } // Add if not already present
+                { $addToSet: { favorites: recipeId } }
             );
             return res.status(200).json({ message: 'Recipe added to favorites' });
         }
@@ -450,7 +411,6 @@ app.put('/user/:userId/favorites', authenticateToken, async (req, res) => {
     }
 });
 
-// Route to get a user's favorite recipes
 app.get('/users/:userId/favorites', authenticateToken, async (req, res) => {
     const userId = req.params.userId;
 
@@ -460,8 +420,8 @@ app.get('/users/:userId/favorites', authenticateToken, async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const favorites = user.favorites; // This should be an array of recipe IDs
-        const favoriteRecipes = await recipeCollection.find({ RecipeId: { $in: favorites } }).toArray(); // Adjust if your recipe ID field is different
+        const favorites = user.favorites;
+        const favoriteRecipes = await recipeCollection.find({ RecipeId: { $in: favorites } }).toArray();
         
         res.json(favoriteRecipes);
     } catch (error) {
@@ -505,39 +465,34 @@ app.put('/user/:userId/photo', authenticateToken, async (req, res) => {
     
     // Parse ingredients
     const ingredientArray = ingredients
-        .replace(/c\(|\)|"/g, '') // Clean up string
+        .replace(/c\(|\)|"/g, '')
         .split(',')
         .map(ingredient => ingredient.trim());
 
     // Build the query object
     const query = { $or: ingredientArray.map(ingredient => ({
-        RecipeIngredientParts: { $regex: new RegExp(`\\b${ingredient}\\b`, 'i') } // Match ingredient
+        RecipeIngredientParts: { $regex: new RegExp(`\\b${ingredient}\\b`, 'i') }
     })) };
 
-    // Add category filter if provided
     if (category) {
         query.RecipeCategory = category;
     }
 
-    // Add dietary category filter if provided
     if (dietaryCategory) {
         query.DietaryCategory = dietaryCategory;
     }
 
-    // Add rating filter if provided
     if (minRating) {
-        query.AggregatedRating = { $gte: parseFloat(minRating) }; // Convert to float
+        query.AggregatedRating = { $gte: parseFloat(minRating) };
     }
 
-    // Add total time filter if provided
     if (maxTotalTime) {
-        query.TotalTime = { $lte: parseInt(maxTotalTime, 10) }; // Convert to integer
+        query.TotalTime = { $lte: parseInt(maxTotalTime, 10) };
     }
 
-    // Add keywords filter if provided
     if (keywords) {
         const keywordArray = keywords.split(',').map(keyword => keyword.trim());
-        query.Keywords = { $in: keywordArray }; // Match any of the keywords
+        query.Keywords = { $in: keywordArray };
     }
 
     try {
@@ -550,30 +505,27 @@ app.put('/user/:userId/photo', authenticateToken, async (req, res) => {
 });
 app.post('/note', authenticateToken, async (req, res) => {
     const { recipeId, note } = req.body;
-    const userId = req.user.userId; // Ensure this is correctly set
+    const userId = req.user.userId;
 
-    console.log("Received note:", { userId, recipeId, note }); // Debug log for incoming data
+    console.log("Received note:", { userId, recipeId, note });
 
     try {
-        // Check if a note already exists for this user and recipe
         const existingNote = await noteCollection.findOne({ userId, recipeId });
-        console.log("Existing note:", existingNote); // Log to see if the note exists
+        console.log("Existing note:", existingNote);
 
         if (existingNote) {
-            // If a note exists, update it
             const result = await noteCollection.updateOne(
                 { _id: existingNote._id },
                 { $set: { note } }
             );
-            console.log("Update result:", result); // Log the result of the update operation
+            console.log("Update result:", result);
             if (result.modifiedCount === 0) {
                 return res.status(400).json({ message: 'No changes made to the note' });
             }
             res.json({ message: 'Note updated successfully' });
         } else {
-            // If no note exists, create a new one
             const result = await noteCollection.insertOne({ userId, recipeId, note });
-            console.log("Insert result:", result); // Log the result of the insert operation
+            console.log("Insert result:", result);
             res.json({ message: 'Note saved successfully' });
         }
     } catch (error) {
@@ -588,10 +540,10 @@ app.get('/note/:recipeId', authenticateToken, async (req, res) => {
 
     try {
         const note = await noteCollection.findOne({
-            userId,  // Assume userId is a string if stored that way in MongoDB
+            userId,
             recipeId,
         });
-        res.json(note ? { note: note.note } : { note: '' });  // Consistent response with an empty note if none exists
+        res.json(note ? { note: note.note } : { note: '' });
     } catch (error) {
         console.error('Error retrieving note:', error);
         res.status(500).json({ message: 'Error retrieving note' });

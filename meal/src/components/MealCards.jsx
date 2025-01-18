@@ -8,13 +8,11 @@ import StarRating from './StarRating';
 import arrow from '../assests/Arrows.png';
 
 const MealCards = ({ recipe }) => {
-  // Function to limit the description to 10 words
   const getLimitedDescription = (description) => {
     return description.split(' ').slice(0, 8).join(' ') + (description.split(' ').length > 10 ? '...' : '');
   };
 
 /*const countIngredients = (ingredientsString) => {
-    // Remove the "c(" and ")" and split by comma to convert into an array
     const ingredientsArray = ingredientsString.replace(/c\(|\)/g, '').split(',');
     return ingredientsArray.length;
   };*/

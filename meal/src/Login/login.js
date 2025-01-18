@@ -26,10 +26,10 @@ function Login({ setUser }) {
       }
 
       const data = await response.json();
-      localStorage.setItem("token", data.token); // Store JWT token in localStorage
-      localStorage.setItem("userId", data._id); // Store user ID in localStorage
+      localStorage.setItem("token", data.token); 
+      localStorage.setItem("userId", data._id);
 
-      setUser({ token: data.token }); // Set user state
+      setUser({ token: data.token });
       setMessage("Login Successful!");
       navigate("/profile");
     } catch (error) {

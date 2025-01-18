@@ -60,7 +60,6 @@ const CaloriePage = () => {
     const timer = setTimeout(() => {
       setError(null);
 
-      // Validate calorie filters
       if ((minCalorieFilter < 0) || (maxCalorieFilter < 0)) {
         setError("Please enter valid numbers for calories (greater than or equal to 0).");
         return;
@@ -73,38 +72,38 @@ const CaloriePage = () => {
 
       fetchMeals();
     }, 500);
-    return () => clearTimeout(timer); // Cleanup the timer
+    return () => clearTimeout(timer);
   }, [minCalorieFilter, maxCalorieFilter, currentPage, categoryFilter, fetchMeals]);
 
   const handleMinCalorieChange = (e) => {
     const value = e.target.value;
     setMinCalorieFilter(value);
     setCurrentPage(1);
-    localStorage.setItem('minCalorieFilter', value); // Save to local storage
+    localStorage.setItem('minCalorieFilter', value);
   };
 
   const handleMaxCalorieChange = (e) => {
     const value = e.target.value;
     setMaxCalorieFilter(value);
     setCurrentPage(1);
-    localStorage.setItem('maxCalorieFilter', value); // Save to local storage
+    localStorage.setItem('maxCalorieFilter', value); 
   };
 
   const handleCategoryChange = (category) => {
     setCategoryFilter(category);
     setCurrentPage(1);
-    localStorage.setItem('categoryFilter', category); // Save to local storage
+    localStorage.setItem('categoryFilter', category);
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1); // Increment page number
+      setCurrentPage((prevPage) => prevPage + 1);
     }
   };
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1); // Decrement page number
+      setCurrentPage((prevPage) => prevPage - 1);
     }
   };
 
@@ -134,7 +133,6 @@ const CaloriePage = () => {
             </button>
           </div>
 
-          {/* Category Filter Section */}
           <div className="category-filter text-center mb-4">
             <div
               className={`filter-box ${categoryFilter === 'Herbivore' ? 'selected' : ''}`}

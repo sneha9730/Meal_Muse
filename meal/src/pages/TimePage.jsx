@@ -15,7 +15,6 @@ const TimePage = () => {
   const [categoryFilter, setCategoryFilter] = useState('');
 
   useEffect(() => {
-    // Load filters from local storage
     const storedMinTime = localStorage.getItem('minTimeFilter');
     const storedMaxTime = localStorage.getItem('maxTimeFilter');
     const storedCategory = localStorage.getItem('categoryFilter');
@@ -30,7 +29,6 @@ const TimePage = () => {
     setMaxTimeFilter('');
     setCategoryFilter('');
     setCurrentPage(1);
-    // Clear filters from local storage
     localStorage.removeItem('minTimeFilter');
     localStorage.removeItem('maxTimeFilter');
     localStorage.removeItem('categoryFilter');
@@ -93,21 +91,18 @@ const TimePage = () => {
   const handleMinTimeChange = (e) => {
     setMinTimeFilter(e.target.value);
     setCurrentPage(1);
-    // Save filter to local storage
     localStorage.setItem('minTimeFilter', e.target.value);
   };
 
   const handleMaxTimeChange = (e) => {
     setMaxTimeFilter(e.target.value);
     setCurrentPage(1);
-    // Save filter to local storage
     localStorage.setItem('maxTimeFilter', e.target.value);
   };
 
   const handleCategoryChange = (category) => {
     setCategoryFilter(category);
     setCurrentPage(1);
-    // Save filter to local storage
     localStorage.setItem('categoryFilter', category);
   };
 

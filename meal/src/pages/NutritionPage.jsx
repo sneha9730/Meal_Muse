@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/NutritionPage.css';
-import MealCards from '../components/MealCards'; // Import MealCards component
+import MealCards from '../components/MealCards';
 import bodyScaleIcon from '../assests/body-scale.png';
 import generalHealthyDietIcon from '../assests/general-healthy-diet.png';
 import healthyFlexIcon from '../assests/healthy-flex.png';
@@ -19,13 +19,13 @@ import enduranceIcon from '../assests/endurance.png';
 
 const NutritionPage = () => {
     const [selectedGoal, setSelectedGoal] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState(null); // Allow null to load all recipes initially
+    const [selectedCategory, setSelectedCategory] = useState(null);
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [hasFetched, setHasFetched] = useState(false); // New state to track if fetch has occurred
+    const [hasFetched, setHasFetched] = useState(false);
 
 
     const scrollGoals = (direction) => {
@@ -43,17 +43,16 @@ const NutritionPage = () => {
 
     const selectCategory = (category) => {
         setSelectedCategory(category);
-        setCurrentPage(1); // Reset to first page on category change
+        setCurrentPage(1);
     };
 
     const displayRecipes = async (page = 1) => {
-        setLoading(true); // Set loading only when displaying recipes
+        setLoading(true);
         setError(null);
 
         try {
             let url = `http://localhost:5000/recipes-by-nutrition-and-diet?page=${page}&limit=20`;
 
-            // Build URL based on selections
             if (selectedGoal) {
                 url += `&LifestyleGoals=${encodeURIComponent(selectedGoal)}`;
             }
@@ -70,7 +69,7 @@ const NutritionPage = () => {
             setRecipes(data.recipes || []);
             setTotalPages(data.totalPages || 0);
             setCurrentPage(page);
-            setHasFetched(true); // Set to true once data has been fetched
+            setHasFetched(true);
         } catch (error) {
             setError('Error fetching recipes: ' + error.message);
         } finally {
@@ -80,13 +79,13 @@ const NutritionPage = () => {
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
-            displayRecipes(currentPage + 1); // Fetch next page
+            displayRecipes(currentPage + 1);
         }
     };
 
     const handlePreviousPage = () => {
         if (currentPage > 1) {
-            displayRecipes(currentPage - 1); // Fetch previous page
+            displayRecipes(currentPage - 1); 
         }
     };
 
@@ -174,7 +173,7 @@ const NutritionPage = () => {
                     </div>
                 )}
 
-                {error && <p className="error-message">{error}</p>} {/* Display error message */}
+                {error && <p className="error-message">{error}</p>} 
             </section>
 
             <div id="recipesContainer" className="recipes-container">

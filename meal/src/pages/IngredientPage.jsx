@@ -1,24 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import MealCards from '../components/MealCards'; // Ensure the path is correct
-import '../styles/IngredientPage.css'; // Import your custom styles
+import MealCards from '../components/MealCards';
+import '../styles/IngredientPage.css';
 import ResetIcon from '../assests/reset.png';
 
 const IngredientPage = () => {
   const [filteredMeals, setFilteredMeals] = useState([]);
-  const [ingredients, setIngredients] = useState(localStorage.getItem('ingredients') || ''); // Retrieve from localStorage
+  const [ingredients, setIngredients] = useState(localStorage.getItem('ingredients') || '');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [categoryFilter, setCategoryFilter] = useState(localStorage.getItem('categoryFilter') || ''); // Retrieve from localStorage
+  const [categoryFilter, setCategoryFilter] = useState(localStorage.getItem('categoryFilter') || '');
   const [hasFetched, setHasFetched] = useState(false);
 
   const resetFilters = () => {
     setIngredients('');
     setCategoryFilter('');
     setCurrentPage(1);
-    localStorage.removeItem('ingredients'); // Clear from localStorage
-    localStorage.removeItem('categoryFilter'); // Clear from localStorage
+    localStorage.removeItem('ingredients'); 
+    localStorage.removeItem('categoryFilter');
   };
 
   const fetchMeals = useCallback(async () => {
@@ -60,10 +60,10 @@ const IngredientPage = () => {
   }, [ingredients, currentPage, fetchMeals]);
 
   useEffect(() => {
-    localStorage.setItem('ingredients', ingredients); // Store ingredients in localStorage
-    localStorage.setItem('categoryFilter', categoryFilter); // Store category in localStorage
-  }, [ingredients, categoryFilter]); // Update localStorage whenever these change
-
+    localStorage.setItem('ingredients', ingredients);
+    localStorage.setItem('categoryFilter', categoryFilter);
+  }, [ingredients, categoryFilter]);
+  
   const handleIngredientChange = (e) => {
     const value = e.target.value;
 

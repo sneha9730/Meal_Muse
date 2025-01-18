@@ -13,7 +13,6 @@ async function importData() {
         const database = client.db('MealMuse');
         const collection = database.collection('recipes');
 
-        // Read JSON file
         const data = JSON.parse(fs.readFileSync('C:/Users/usika/Downloads/recipes_forms_data.json', 'utf8'));
 
         const transformedData = data.map((recipe) => {
@@ -25,7 +24,6 @@ async function importData() {
         });
         
 
-        // Insert transformed data into MongoDB
         const result = await collection.insertMany(transformedData);
         console.log(`${result.insertedCount} recipes were inserted`);
 

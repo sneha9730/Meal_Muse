@@ -163,7 +163,7 @@ const RecipeDetails = () => {
     
             if (response.ok) {
                 alert('Note saved successfully');
-                setNote(note); // Update state with the latest note
+                setNote(note);
             } else {
                 const errorMessage = response.headers.get('Content-Type').includes('application/json')
                     ? await response.json()

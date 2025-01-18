@@ -8,13 +8,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  // Logout function
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
   };
 
-  // Function to handle smooth scroll to "About" section
   const scrollToAbout = (e) => {
     e.preventDefault();
     navigate('/');
@@ -26,7 +24,6 @@ const Navbar = () => {
     }, 0);
   };
 
-  // Function to handle smooth scroll to "Category" section
   const scrollToCategory = (e) => {
     e.preventDefault();
     navigate('/');

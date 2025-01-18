@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/FilterComponents.css'; // Import your custom styles
+import '../styles/FilterComponents.css';
 
 const FilterComponents = ({ placeholder, filterValue, onFilterChange }) => {
   return (

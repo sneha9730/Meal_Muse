@@ -56,13 +56,13 @@
     border: 1px solid #252330;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 1);
-    height: 40px; /* Sets the height of the input box */
+    height: 40px;
 }
 
 .input-group-text {
     background-color: #ea2340;
     border: none;
-    height: 40px; /* Matches the height of the input box */
+    height: 40px;
     display: flex;
     align-items: center;
 }

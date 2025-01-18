@@ -1,5 +1,5 @@
 .footer {
-    background-color: #1c1d24; /* Dark background color */
+    background-color: #1c1d24;
     color: white;
     align-items: center;
     width: 100%;
@@ -8,7 +8,6 @@
     bottom: 0;
 }
 
-/* Footer content styling */
 .footer-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -16,7 +15,6 @@
     align-items: start;
 }
 
-/* Logo section */
 .footer-logo-section {
     display: flex;
     flex-direction: column;
@@ -25,12 +23,10 @@
     padding-right: 5%;
 }
 
-/* Logo styling */
 .footer-logo {
-    width: 200px; /* Adjust logo size as needed */
+    width: 200px;
 }
 
-/* Footer description */
 .footer-description {
     font-size: 1.1rem;
     color: #ccc;
@@ -39,9 +35,8 @@
     text-align: center;
 }
 
-/* Footer links */
 .footer-links ul {
-    list-style: none; /* Remove default bullets */
+    list-style: none;
     padding: 0;
 }
 
@@ -52,9 +47,9 @@
 }
 
 .footer-links li::before {
-    content: ''; /* Empty content for the pseudo-element */
-    background-image: url('../assests/Points-red.png'); /* Path to your bullet image */
-    background-size: 30px 30px; /* Adjust the size of the image as needed */
+    content: '';
+    background-image: url('../assests/Points-red.png');
+    background-size: 30px 30px; 
     background-repeat: no-repeat;
     position: absolute;
     left: 0;
@@ -80,7 +75,6 @@
     color: #ccc;
 }
 
-/* Custom link styling */
 .link {
     padding-top: 20px;
     font-size: 1.75rem;
@@ -90,7 +84,6 @@
     text-align: left;
 }
 
-/* Rights text styling */
 .rights {
     color: #ccc;
     text-align: center;

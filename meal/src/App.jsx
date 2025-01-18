@@ -34,7 +34,7 @@ function App() {
 }
 
 function AppContent({ user, setUser }) {
-  const location = useLocation(); // useLocation inside Router context
+  const location = useLocation();
 
   return (
     <>
@@ -55,7 +55,6 @@ function AppContent({ user, setUser }) {
         <Route path="/nutrition" element={<NutritionPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      {/* Render Footer only if the current path is not /quiz */}
       {location.pathname !== "/quiz" && <Footer />}
     </>
   );

@@ -102,8 +102,8 @@ h1 {
 }
 .loading-message {
   text-align: center;
-  font-size: 1.5rem; /* Adjust font size as needed */
-  margin: 20px 0;   /* Add some margin */
+  font-size: 1.5rem;
+  margin: 20px 0;
   color: #e55519;
 }
 
@@ -125,6 +125,6 @@ span{
 
 @media screen and (max-width: 992px) {
   .meal-cards-container{
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablets */
+    grid-template-columns: repeat(2, 1fr);
   }
 }

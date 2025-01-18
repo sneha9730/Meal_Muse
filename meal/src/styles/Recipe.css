@@ -3,7 +3,7 @@
 }
 
 .recommendations-section h3 {
-    color: #ea2340 !important; /* Red color for the title */
+    color: #ea2340 !important;
     font-size: 2rem;
     font-weight: bold;
     padding-bottom: 15px;
@@ -11,23 +11,22 @@
 
 .recommendations {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Set to exactly 4 columns */
-    gap: 20px; /* Space between the meal cards */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 @media (max-width: 768px) {
     .recommendations {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
     .recommendations {
-        grid-template-columns: 1fr; /* 1 column on extra small screens */
+        grid-template-columns: 1fr;
     }
 }
 
-/* Existing styles remain the same */
 .recipe-details {
     top: 100px !important;
     background-color: #1c1d24;
@@ -125,8 +124,8 @@
 
 
 .fav-button.favorited {
-    background-color: #000; /* Black background when favorited */
-    color: #fff; /* Red text when favorited */
+    background-color: #000; 
+    color: #fff;
 
 }
 
@@ -208,7 +207,6 @@
     background-color: #f0ad4e;
 }
 
-/* Print styles remain the same */
 @media print {
     .button-container,
     #pdf-content .fav-button,

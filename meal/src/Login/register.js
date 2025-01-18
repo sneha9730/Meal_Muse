@@ -44,7 +44,6 @@ function Register({ setUser }) {
 
         setMessage("User Registered Successfully!");
 
-        // Redirect to profile page or any other page
         navigate("/profile");
     } catch (error) {
         setMessage(error.message);

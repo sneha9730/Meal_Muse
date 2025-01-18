@@ -66,7 +66,6 @@
     accent-color: #ff6b6b;
 }
 
-/* Submit button styling */
 .Form button[type="submit"] {
     background-color: #ea2340;
     color: #ffffff;
@@ -85,7 +84,6 @@
     background-color: #fa5f1a;
 }
 
-/* Loading message styling */
 #root > div {
     font-size: 18px;
     color: #b3b3b3;

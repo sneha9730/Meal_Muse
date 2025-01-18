@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link ,useNavigate } from 'react-router-dom';
 import '../styles/Footer.css';
-import logo from '../assests/Logo.png'; // Fixed 'assests' to 'assets'
+import logo from '../assests/Logo.png';
 
 const Footer = () => {
 
@@ -17,8 +17,7 @@ const Footer = () => {
           }
         }, 0);
       };
-    
-      // Function to handle smooth scroll to "Category" section
+
       const scrollToCategory = (e) => {
         e.preventDefault();
         navigate('/');
@@ -34,7 +33,6 @@ const Footer = () => {
         <div className='context-footer'>
         <footer className="footer" >
             <div className="footer-content">
-                {/* First column with logo and description */}
                 <div className="footer-logo-section">
                     <img src={logo} alt="Meal Muse Logo" className="footer-logo" />
                     <p className="footer-description">
@@ -51,8 +49,6 @@ const Footer = () => {
                         <li><a href="#category" className="navLink nav-link" onClick={scrollToCategory}>Personalize Preferences</a></li>
                     </ul>
                 </div>
-
-                {/* Third column with links */}
                 <div className="footer-links">
                 <h5 className='link'>MORE LINKS</h5>
                     <ul>
